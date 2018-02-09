@@ -1,7 +1,6 @@
 from flask import *
 from flask_sqlalchemy import *
 import datetime
-import DateTime
 import sys
 
 app = Flask(__name__)
@@ -37,7 +36,7 @@ class User(db.Model):
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     creator_id = db.Column(db.String(60), nullable=False)
-    created_date = db.Column(DateTime, onupdate= datetime.datetime.now, nullable=False)
+    created_date = db.Column(datatime, onupdate= datetime.datetime.now, nullable=False)
     upvotes = db.Column(db.Integer, nullable=False)
 
 
