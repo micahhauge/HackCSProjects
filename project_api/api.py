@@ -29,6 +29,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(50))
+    display_name = db.Column(db.String(50))
     password = db.Column(db.String(50))
 
 
@@ -53,7 +54,7 @@ def createUser():
     data = request.get_json()
 
     # create a new user object with the data from the request
-    new_user = User(user_name=data['user_name'], password=data['password'])
+    new_user = User(user_name=data['user_name'], password=data['password'], display_name=['display_name'])
 
     # add teh new_user to the session
     db.session.add(new_user)
@@ -71,7 +72,7 @@ def createProject():
 
     data = request.get_json()
 
-    new_project = Project(name = data['name'], creator_id = data['creator_id'], created_date = data['created_date'], upvotes = data['upvotes'], description = data['description'])
+    new_project = Project(name = data['name'], creator_id = data['creator_id'], upvotes = data['upvotes'], description = data['description'])
 
     db.session.add(new_project)
 
