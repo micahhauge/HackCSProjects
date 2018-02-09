@@ -39,7 +39,17 @@ class Project(db.Model):
     created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
     upvotes = db.Column(db.Integer, nullable=False)
 
-
 class UserProject_Association(db.Model):
     user_id = db.Column(db.String(60), nullable = False, primary_key=True)
     project_id = db.Column(db.Integer,nullable = False, primary_key=True)
+
+
+# route to create the database
+@app.route('/create_db')
+def create_db():
+    db.create_all()
+    return 'Success!'
+
+if __name__ == '__main__':
+    print("Running on port 5001")
+    app.run(host='0.0.0.0', port=5001, debug=True)
