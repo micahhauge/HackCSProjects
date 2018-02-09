@@ -85,15 +85,15 @@ def createProject():
 #Nathan
 @app.route("/project",methods =['GET'])
 def getProjects():
-    projects = User.query.all()
+    projects = Project.query.all()
     projectResult = []
 
     for project in projects:
         proj_data = {}
         proj_data['name'] = project.name
         proj_data['creator_id'] = project.creator_id
-        proj_data['created_date'] = project.ncreated_dateame
-        proj_data['upvote'] = project.upvote
+        proj_data['created_date'] = project.created_date
+        proj_data['upvote'] = project.upvotes
         proj_data['description'] = project.description
 
     return jsonify({"Project:" : proj_data})
