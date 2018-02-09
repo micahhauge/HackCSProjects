@@ -36,7 +36,7 @@ class User(db.Model):
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     creator_id = db.Column(db.String(60), nullable=False)
-    created_date = db.Column(datatime, onupdate= datetime.datetime.now, nullable=False)
+    created_date = db.Column(datetime, onupdate= datetime.datetime.now(), nullable=False)
     upvotes = db.Column(db.Integer, nullable=False)
 
 
