@@ -29,6 +29,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(50))
+    password = db.Column(db.String(50))
+
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -57,7 +59,7 @@ def createUser():
     db.session.add(new_user)
 
     # commit the changes to the database
-    db.commit()
+    db.session.commit()
 
     # return a response
     return jsonify({'message': 'Success! User created.'})
@@ -73,7 +75,7 @@ def createProject():
 
     db.session.add(new_project)
 
-    db.commit()
+    db.session.commit()
 
     return jsonify({'message': 'Success! New project created.'})
 
