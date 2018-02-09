@@ -1,4 +1,5 @@
 Flask
 flask-restful
-SQLAlchemy
 psycopg2
+flask_sqlalchemy
+DateTime
