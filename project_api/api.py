@@ -1,7 +1,14 @@
 from flask import *
 from flask_sqlalchemy import *
+import DateTime
+import sys
 
-app = FLask(__name__)
+app = Flask(__name__)
+
+
+@app.route('/hello')
+def helloWorld():
+    return <html>Hello World</html>
 
 
 # configure postgres settings
@@ -23,5 +30,13 @@ class User(db.Model):
     password = db.Column(db.String(80))
     admin = db.Column(db.Boolean)
 
+class Project(db.Model):
+    id = db.Columns(db.Integer, primary_key = True)
+    creator_id = db.Column(db.string(60), nullable=False)
+    created_date = db.Column(DateTime, onupdate=datetime.datetime.now, nullable=False)
+    upvotes = db.Column(db.Integer, nullable=False)
 
-print('hello world')
+
+class UserProject_Association(db.model):
+    user_id = db.Column(db.string(60), nullable = False)
+    project_id = db.Column(db.Integer,nullable = False)
