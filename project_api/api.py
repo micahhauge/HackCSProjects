@@ -36,10 +36,10 @@ class User(db.Model):
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     creator_id = db.Column(db.String(60), nullable=False)
-    created_date = db.Column(datetime, onupdate= datetime.datetime.now(), nullable=False)
+    created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
     upvotes = db.Column(db.Integer, nullable=False)
 
 
-class UserProject_Association(db.model):
+class UserProject_Association(db.Model):
     user_id = db.Column(db.string(60), nullable = False)
     project_id = db.Column(db.Integer,nullable = False)
