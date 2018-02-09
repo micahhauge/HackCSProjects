@@ -41,5 +41,5 @@ class Project(db.Model):
 
 
 class UserProject_Association(db.Model):
-    user_id = db.Column(db.string(60), nullable = False)
-    project_id = db.Column(db.Integer,nullable = False)
+    user_id = db.Column(db.String(60), nullable = False, primary_key=True)
+    project_id = db.Column(db.Integer,nullable = False, primary_key=True)
