@@ -3,3 +3,4 @@ flask-restful
 psycopg2
 flask_sqlalchemy
 DateTime
+flask-cors

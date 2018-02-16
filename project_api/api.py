@@ -1,9 +1,11 @@
 from flask import *
 from flask_sqlalchemy import *
+from flask_cors import CORS
 import datetime
 import sys
 
 app = Flask(__name__, static_folder = "./dist/static", template_folder = "./dist")
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 @app.route('/hello')
@@ -91,7 +93,7 @@ def createProject():
 @app.route("/api/project",methods =['GET'])
 def getProjects():
     projects = Project.query.all()
-    projectResult = []
+    project_list = []
 
     for project in projects:
         proj_data = {}
@@ -100,8 +102,9 @@ def getProjects():
         proj_data['created_date'] = project.created_date
         proj_data['upvote'] = project.upvotes
         proj_data['description'] = project.description
+        project_list.append(proj_data)
 
-    return jsonify({"Project:" : proj_data})
+    return jsonify({"Project:" : project_list})
 
 #Get User
 #Nathan
