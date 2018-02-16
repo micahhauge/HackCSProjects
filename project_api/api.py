@@ -130,6 +130,19 @@ def create_db():
     db.create_all()
     return 'Success!'
 
+# route to fill database
+@app.route('/api/fill_db')
+def fill_db():
+    new_user = User(user_name='micahhauge', password='1234', display_name='Micah Hauge')
+    new_project = Project(name = 'A cool project', creator_id = 1, upvotes = 1, description = 'this is the description for the test project.')
+    another_project = Project(name = 'Another cool project', creator_id = 1, upvotes = 1, description = 'this is the description for another test project.')
+    db.session.add(new_user);
+    db.session.add(new_project);
+    db.session.add(another_project);
+
+    db.session.commit()
+
+
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
