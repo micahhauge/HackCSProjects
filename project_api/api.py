@@ -104,7 +104,7 @@ def getProjects():
         proj_data['description'] = project.description
         project_list.append(proj_data)
 
-    return jsonify({"Project:" : project_list})
+    return jsonify(project_list)
 
 #Get User
 #Nathan
