@@ -3,12 +3,17 @@ from flask_sqlalchemy import *
 import datetime
 import sys
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder = "./dist/static", template_folder = "./dist")
 
 
 @app.route('/hello')
 def helloWorld():
     return '<html>Hello World</html>'
+
+# route to index.html (handles frontend)
+@app.route('/')
+def index():
+    return render_template("index.html")
 
 
 # configure postgres settings
@@ -48,7 +53,7 @@ class UserProject_Association(db.Model):
 
 # Create user route
 # Author: Micah Hauge
-@app.route('/user', methods=['POST'])
+@app.route('/api/user', methods=['POST'])
 def createUser():
     # get datat from request
     data = request.get_json()
@@ -67,7 +72,7 @@ def createUser():
 
 #Create Project
 #Author: Spencer Arnold
-@app.route('/project', methods=['POST'])
+@app.route('/api/project', methods=['POST'])
 def createProject():
 
     data = request.get_json()
@@ -83,7 +88,7 @@ def createProject():
 
 #Get Projects
 #Nathan
-@app.route("/project",methods =['GET'])
+@app.route("/api/project",methods =['GET'])
 def getProjects():
     projects = Project.query.all()
     projectResult = []
@@ -100,7 +105,7 @@ def getProjects():
 
 #Get User
 #Nathan
-@app.route("/user",methods=['GET'])
+@app.route("/api/user",methods=['GET'])
 def getUser():
     users = User.query.all()
     result = []
@@ -117,10 +122,15 @@ def getUser():
 
 
 # route to create the database
-@app.route('/create_db')
+@app.route('/api/create_db')
 def create_db():
     db.create_all()
     return 'Success!'
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return render_template("index.html")
 
 if __name__ == '__main__':
     print("Running on port 5001")
