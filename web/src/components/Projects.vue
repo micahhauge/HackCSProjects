@@ -2,14 +2,20 @@
 <template>
   <div class='container'>
   <h3>Projects</h3>
-  <div v-for="project in projects" class="card border-primary mb-3" style="max-width: 20rem;">
-    <div class="card-header">{{ project.name }}</div>
-    <div class="card-body">
-      <h4 class="card-title">{{project.name}}</h4>
-      <p class="card-text"> {{project.created_date}} </p>
-      <p class="card-text"> {{project.upvote}} </p>
-      <p class="card-text">{{ project.description }}</p>
+  <div class="row">
+
+  <div v-for="project in projects"  class="col-sm-4">
+    <div class="card border-primary mb-3" style="max-width: 20rem;">
+      <div class="card-header">{{ project.name }}</div>
+      <div class="card-body">
+        <h4 class="card-title">{{project.name}}</h4>
+        <p class="card-text"> {{project.created_date}} </p>
+        <p class="card-text"> {{project.upvote}} </p>
+        <p class="card-text">{{ project.description }}</p>
+      </div>
     </div>
+  </div>
+
   </div>
   </div>
 </template>
