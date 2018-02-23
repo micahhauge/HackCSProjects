@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  webapp:
-    build: ./webapp
-    command: npm run dev
-    volumes:
-      - ./webapp:/usr/src/app
-    ports:
-      - 8080:8080
+  # webapp:
+  #   build: ./webapp
+  #   command: npm run dev
+  #   volumes:
+  #     - ./webapp:/usr/src/app
+  #   ports:
+  #     - 8080:8080
 
 
   project_api:
