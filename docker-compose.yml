@@ -1,18 +1,15 @@
 version: '3'
-
 services:
-  project_api:
-    build: ./project_api
+  api:
+    build: ./api
     volumes:
-      - ./project_api:/usr/src/app
+      - ./api:/usr/src/app
     ports:
-      - 5001:5001
-    depends_on:
-      - db
-
+      - 3333:3333
+    command: nodemon server.js
   db:
     image: postgres
     ports:
       - 5432:5432
-    # volumes:
-    #   - ./data/postgres:/var/lib/postgresql/data
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
