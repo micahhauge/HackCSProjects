@@ -12,7 +12,7 @@
         <div class="card-header">{{ project.name }}</div>
         <div class="card-body">
           <h4 class="card-title">{{ project.name }}</h4>
-          <p class="card-text"> Creator: {{ project.creator }}</p>
+          <p class="card-text"> Creator: {{ project.creator_name }}</p>
           <p class="card-text"> {{ project.description }}</p>
           <div class="btn-group float-left">
             <button class="btn btn-primary">More Info</button>

@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3333';
+const BASE_URL = 'http://localhost:3000';
 
 export { getPublicProjects, getPrivateProjects };
 
 import { getIdToken, getAccessToken } from './auth';
 
 function getPublicProjects () {
-  const url = `${BASE_URL}/api/projects/public`;
-  return axios.get(url).then(response => response.data);
+  const url = `${BASE_URL}/api/projects/`;
+  return axios.get(url).then(response => response.data.data);
 }
 
 function getPrivateStartupBattles() {
