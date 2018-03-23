@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000';
 
-export { getPublicProjects, getPrivateProjects };
+export { getPublicProjects, getPrivateProjects, postProject };
 
 import { getIdToken, getAccessToken } from './auth';
 
@@ -11,9 +11,16 @@ function getPublicProjects () {
   return axios.get(url).then(response => response.data.data);
 }
 
-function getPrivateStartupBattles() {
-  const url = `${BASE_URL}/api/projects/private`;
-  console.log('access: ', getAccessToken())
-  console.log('id: ', getIdToken())
-  return axios.get(url, { headers: { Authorization: `Bearer ${getAccessToken()}` }}).then(response => response.data);
+function postProject(project) {
+  const url = `${BASE_URL}/api/projects/`;
+  // console.log('access: ', getAccessToken())
+  // console.log('id: ', getIdToken())
+  console.log(project);
+  axios.post(url, {
+    body: {
+      name: 'test',
+      description: 'test',
+    }
+  })
+  // return axios.post(url, { headers: { Authorization: `Bearer ${getAccessToken()}` }, body: project }).then(response => response.data);
 }

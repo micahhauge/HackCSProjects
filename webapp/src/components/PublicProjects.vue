@@ -2,7 +2,7 @@
   <div>
     <app-nav></app-nav>
     <div class="container">
-      <h3 class="" id="title">Explore Projects</h3>
+    <h3 class="" id="title">Explore Projects</h3>
     <hr/>
 
     <div class="row">
@@ -26,8 +26,8 @@
 
     <div class="col-sm-12">
       <div class="jumbotron text-center" v-if="isLoggedIn()">
-        <h2>View Private Projects</h2>
-        <router-link class="btn btn-lg btn-success" to="/private-projects">Private Projects</router-link>
+        <h2>Want to start your own project? </h2>
+        <router-link class="btn btn-lg btn-success" to="/CreateProject">Create Project</router-link>
       </div>
       <div class="jumbotron text-center" v-else>
         <h2>Create a Project by Logging In</h2>
