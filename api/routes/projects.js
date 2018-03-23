@@ -65,12 +65,9 @@ router.put('/:id', function(req, res, next) {
 });
 
 /* GET project listing. */
-router.delete('/:id', function(req, res, next) {
-  const project_id = req.params.id
+router.delete('/', function(req, res, next) {
 
-  model.Project.destroy({ where: {
-    id: project_id
-  }})
+  model.Project.destroy({ where: {}})
   .then(status => res.status(201).json({
     error: false,
     message: 'todo has been deleted.'

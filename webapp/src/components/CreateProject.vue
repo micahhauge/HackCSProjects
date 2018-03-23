@@ -28,7 +28,7 @@
 
 <script>
 import AppNav from './AppNav';
-import { isLoggedIn } from '../../utils/auth';
+import { isLoggedIn, getProfile } from '../../utils/auth';
 import { postProject } from '../../utils/projects-api';
 
 export default {
@@ -41,8 +41,8 @@ export default {
       project: {
         name: '',
         description: '',
-        creator_name: "Micah Hauge",
-	      creator_id: "github|0320932138",
+        creator_name: "",
+	      creator_id: "",
         // password: '',
       },
     };
@@ -56,18 +56,17 @@ export default {
     },
     handleSubmit() {
       // Send data to the server or update your stores and such.
-      // console.log('submit')
-      // console.log(JSON.stringify(this.project));
-
-      // postProject();
-      postProject(JSON.stringify(this.project));
-      // axios.post(`localhost:3000/api/projects`, {
-      //   body: this.project
-      // })
+      postProject(this.project)
+        .then( () => { this.$router.push('/') });
     }
   },
   mounted() {
     // this.getPrivateProjects();
+    getProfile((profile) => {
+      this.$set(this.project, 'creator_name', profile.name)
+      this.$set(this.project, 'creator_id', profile.sub)
+
+    });
   },
 };
 </script>

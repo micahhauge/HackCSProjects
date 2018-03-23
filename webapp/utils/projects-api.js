@@ -13,14 +13,6 @@ function getPublicProjects () {
 
 function postProject(project) {
   const url = `${BASE_URL}/api/projects/`;
-  // console.log('access: ', getAccessToken())
-  // console.log('id: ', getIdToken())
   console.log(project);
-  axios.post(url, {
-    body: {
-      name: 'test',
-      description: 'test',
-    }
-  })
-  // return axios.post(url, { headers: { Authorization: `Bearer ${getAccessToken()}` }, body: project }).then(response => response.data);
+  return axios.post(url, project);
 }

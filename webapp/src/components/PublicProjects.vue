@@ -13,6 +13,7 @@
         <div class="card-body">
           <h4 class="card-title">{{ project.name }}</h4>
           <p class="card-text"> Creator: {{ project.creator_name }}</p>
+          <p class="card-text"> Creator_id: {{ project.creator_id }}</p>
           <p class="card-text"> {{ project.description }}</p>
           <div class="btn-group float-left">
             <button class="btn btn-primary">More Info</button>
@@ -63,6 +64,7 @@ export default {
     },
   },
   mounted() {
+    console.log('MOUNTED')
     this.getPublicProjects();
     getProfile((user) => {
       console.log(user);
